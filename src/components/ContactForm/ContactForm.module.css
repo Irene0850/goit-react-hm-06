@@ -1,6 +1,6 @@
 .formContainer {
   max-width: 420px;
-  border: 2px solid #000;
+  border: 2px solid #f5ecec;
   padding: 10px 5px;
   display: flex;
   flex-direction: column;
@@ -24,12 +24,14 @@
   width: 380px;
   height: 30px;
   margin: auto;
-  border: 2px solid #000;
+  border: 2px solid #514545;
+  background-color: #a1e6e6;
+  color: #204164;
 }
 
 .button {
   display: block;
-  border: 1px solid #000;
+  border: 1px solid #5b4949;
   max-width: 170px;
   padding: 10px;
   background-color: #007bff;
@@ -39,5 +41,5 @@
 }
 
 .button:hover {
-  background-color: #204164;
+  background-color: #13375c;
 }

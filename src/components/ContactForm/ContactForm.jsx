@@ -7,10 +7,14 @@ import { addContact } from "../../redux/contactsSlice";
 
 const ContactFormSchema = Yup.object().shape({
   name: Yup.string()
+    .matches(/^[aA-zZ\s]+$/, "Name must contain only letters")
     .min(3, "Too Short!")
     .max(50, "Too Long!")
     .required("Required"),
-  number: Yup.string().max(12, "Too Long").required("Required"),
+  number: Yup.string()
+    .matches(/^[0-9\-]+$/, "Number must contain only digits and dashes")
+    .max(12, "Too Long")
+    .required("Required"),
 });
 
 function ContactForm() {
@@ -31,18 +35,32 @@ function ContactForm() {
       }}
     >
       <Form className={css.formContainer}>
-        <div className="css.box">
+        <div className={css.box}>
           <label className={css.label} htmlFor={nameFieldId}>
             Name:
           </label>
           <Field
             className={css.field}
             type="text"
-            htmlFor={numberFieldId}
+            htmlFor={nameFieldId}
+            name="name"
+          />
+          <ErrorMessage name="name" />
+        </div>
+
+        <div className={css.box}>
+          <label className={css.label} htmlFor={numberFieldId}>
+            Number:
+          </label>
+          <Field
+            className={css.field}
+            id={numberFieldId}
+            type="text"
             name="number"
           />
           <ErrorMessage name="number" />
         </div>
+
         <button className={css.button} type="submit">
           Add contact
         </button>
